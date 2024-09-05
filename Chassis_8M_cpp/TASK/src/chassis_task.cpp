@@ -63,7 +63,6 @@ void Control_Move_c::Get_Cmd(void)
     if(this->RC->ctrl.kb.bit.Q == 1)  this->Chassis_Mode = FOLLOW;
     if(this->RC->ctrl.kb.bit.E == 1)  this->Chassis_Mode = SPIN;
     if(this->RC->ctrl.kb.bit.R == 1)  this->Chassis_Mode = NO_FOLLOW; 
-
 }
 
 void Control_Move_c::Set_Cmd(void)

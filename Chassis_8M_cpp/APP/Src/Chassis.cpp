@@ -32,10 +32,10 @@ void Speed_c::Set(int16_t Forward, int16_t Right, float Different_Angle_with_Gim
             this->Spin = 0;
 			break;
         case FOLLOW:
-            this->Z_speed_pid.PidCalculate(0, Different_Angle_with_Gimbal);
+            this->Spin = -this->Z_speed_pid.PidCalculate(0, Different_Angle_with_Gimbal);
 			break;
 		case SPIN:
-            this->Spin = 1;
+            this->Spin = 100;
 			break;			
 		case NO_FORCE:
             this->Right = 0;
@@ -57,9 +57,10 @@ void Speed_c::Set(int16_t Forward, int16_t Right, float Different_Angle_with_Gim
 /**
  * @brief 更新底盘云台差角
  */
+
 void CHASSIS_c::Update_Different_Angle_with_Gimbal(void)
 {
-    static int16_t yaw_encoder_zero = 0;
+    static int16_t yaw_encoder_zero = 1925;
     int16_t yaw_encoder_value = this->Yaw_Motor.DJIMotor_feedback_data.position;
     this->Different_Angle_with_Gimbal = (yaw_encoder_value - yaw_encoder_zero) * 360.0f / 8192.0f;
     this->Different_Angle_with_Gimbal = loop_fp32_constrain(this->Different_Angle_with_Gimbal, -180.0f, 180.0f);
@@ -127,10 +128,10 @@ void CHASSIS_c::MotorCalc(void)
         this->LB_Motor.Set_PID_Mode(Speed_PID);
         this->RB_Motor.Set_PID_Mode(Speed_PID);
 
-        this->LF_Motor.Set_PID_Val(this->Speed.LF);
-        this->RF_Motor.Set_PID_Val(this->Speed.RF);
-        this->LB_Motor.Set_PID_Val(this->Speed.LB);
-        this->RB_Motor.Set_PID_Val(this->Speed.RB);    
+        this->LF_Motor.Set_PID_Val(this->Speed.LF * 10.0f);
+        this->RF_Motor.Set_PID_Val(this->Speed.RF * 10.0f);
+        this->LB_Motor.Set_PID_Val(this->Speed.LB * 10.0f);
+        this->RB_Motor.Set_PID_Val(this->Speed.RB * 10.0f);   
     }
     else
     {
@@ -170,10 +171,10 @@ void CHASSIS_c::MotorCtrl(void)
 void CHASSIS_c::SetSpeed(int16_t Gimbal_Forward, int16_t Gimbal_Right)
 {
     this->Update_Different_Angle_with_Gimbal();
-    int16_t Chassis_Right = -Gimbal_Forward * sin_calculate(this->Different_Angle_with_Gimbal)
-                            -Gimbal_Right * cos_calculate(this->Different_Angle_with_Gimbal);
-    int16_t Chassis_Forward =  Gimbal_Forward * cos_calculate(this->Different_Angle_with_Gimbal) 
-                              -Gimbal_Right * sin_calculate(this->Different_Angle_with_Gimbal);
+    int16_t Chassis_Right = -Gimbal_Forward * cos_calculate(this->Different_Angle_with_Gimbal)
+                            -Gimbal_Right * sin_calculate(this->Different_Angle_with_Gimbal);
+    int16_t Chassis_Forward = - Gimbal_Forward * sin_calculate(this->Different_Angle_with_Gimbal) 
+                              + Gimbal_Right * cos_calculate(this->Different_Angle_with_Gimbal);
     this->Speed.Set(Chassis_Forward, Chassis_Right, this->Different_Angle_with_Gimbal, this->Chassis_Mode);
 }
 
@@ -276,13 +277,36 @@ void CHASSIS_c::Power_Control(float MaxPowerLimit)
 }
 
 CHASSIS_c::CHASSIS_c(void):
-LF_Motor(&hcan1, 1, false, M3508, 3500, 1, 1, 1, NONE, 1, 1, 1, NONE),
-RF_Motor(&hcan1, 2, false, M3508, 3500, 1, 1, 1, NONE, 1, 1, 1, NONE),
-LB_Motor(&hcan1, 3, false, M3508, 3500, 1, 1, 1, NONE, 1, 1, 1, NONE),
-RB_Motor(&hcan1, 4, false, M3508, 3500, 1, 1, 1, NONE, 1, 1, 1, NONE),
-FIRE_Motor(&hcan1, 5, false, M3508, 3500, 1, 1, 1, NONE, 1, 1, 1, NONE),
-Yaw_Motor(&hcan2, 1, false, GM6020, 3500, 1, 2, 3, NONE, 4, 5, 6, NONE)
+LF_Motor(&hcan1, 1, false, M3508, 3500, 15, 0, 0.5, Output_Limit | StepIn, 0.3, 0, 0, NONE),
+RF_Motor(&hcan1, 4, true, M3508, 3500, 15, 0, 0.5, Output_Limit | StepIn, 0.3, 0, 0, NONE),
+LB_Motor(&hcan1, 3, false, M3508, 3500, 15, 0, 0.5, Output_Limit | StepIn, 0.3, 0, 0, NONE),
+RB_Motor(&hcan1, 2, true, M3508, 3500, 15, 0, 0.5, Output_Limit | StepIn, 0.3, 0, 0, NONE),
+FIRE_Motor(&hcan1, 5, false, M3508, 3500, 1, 0, 0, Output_Limit, 0.8, 0.3, 100, Integral_Limit | Output_Limit),
+Yaw_Motor(&hcan2, 1, false, GM6020, 3500)
 {
+    LF_Motor.Control_PID.InitSpeedPidMode(Output_Limit, MOTOR_3508_CURRENT_LIMIT, 0);
+    RF_Motor.Control_PID.InitSpeedPidMode(Output_Limit, MOTOR_3508_CURRENT_LIMIT, 0);
+    LB_Motor.Control_PID.InitSpeedPidMode(Output_Limit, MOTOR_3508_CURRENT_LIMIT, 0);
+    RB_Motor.Control_PID.InitSpeedPidMode(Output_Limit, MOTOR_3508_CURRENT_LIMIT, 0);
+
+    LF_Motor.Control_PID.InitSpeedPidMode(StepIn, 12, 0);
+    RF_Motor.Control_PID.InitSpeedPidMode(StepIn, 12, 0);
+    LB_Motor.Control_PID.InitSpeedPidMode(StepIn, 12, 0);
+    RB_Motor.Control_PID.InitSpeedPidMode(StepIn, 12, 0);
+
+    FIRE_Motor.Control_PID.InitSpeedPidMode(Output_Limit, MOTOR_3508_CURRENT_LIMIT, 0);
+    FIRE_Motor.Control_PID.InitPositionPidMode(Output_Limit, FIRE_3508_CURRENT_LIMIT, 0);
+    FIRE_Motor.Control_PID.InitPositionPidMode(Integral_Limit, 150 , 0);
+
+    MotorManager::AddMotor(&LF_Motor, &hcan1);
+    MotorManager::AddMotor(&RF_Motor, &hcan1);
+    MotorManager::AddMotor(&LB_Motor, &hcan1);
+    MotorManager::AddMotor(&RB_Motor, &hcan1);
+    MotorManager::AddMotor(&FIRE_Motor, &hcan1);
+    MotorManager::AddMotor(&Yaw_Motor, &hcan2);
+
+
+
     this->Different_Angle_with_Gimbal = 0;
     this->Chassis_State = Chassis_State_e::LOCK;
     this->Chassis_Mode = Chassis_Mode_e::NO_FORCE;

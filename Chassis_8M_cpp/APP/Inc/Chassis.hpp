@@ -35,9 +35,11 @@ public:
     int16_t RB = 0;
     int16_t LF = 0;
     int16_t LB = 0;
-    Speed_c() : Z_speed_pid(1.0, 0.1, 0.01, Deadzone)
+    Speed_c() : Z_speed_pid(1.0, 0.1, 0.01, Output_Limit | Integral_Limit | Deadzone)
     {
-        Z_speed_pid.InitMode(Deadzone, 5, 5);
+        Z_speed_pid.InitMode(Output_Limit, 660, 0);
+        Z_speed_pid.InitMode(Integral_Limit, 300, 0);
+        Z_speed_pid.InitMode(Deadzone, 5, 0);
     } // 传入合适的参数;
 
     void Set_Solution_method(Solution_method_e Solution_method);
