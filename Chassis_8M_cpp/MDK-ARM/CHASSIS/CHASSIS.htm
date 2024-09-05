@@ -3,9 +3,9 @@
 <title>Static Call Graph - [CHASSIS\CHASSIS.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image CHASSIS\CHASSIS.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6160001: Last Updated: Thu Sep  5 17:35:09 2024
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6160001: Last Updated: Thu Sep  5 18:03:49 2024
 <BR><P>
-<H3>Maximum Stack Usage =        984 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        696 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 _GLOBAL__sub_I_Chassis.cpp &rArr; __cxx_global_var_init &rArr; CHASSIS_c::CHASSIS_c() &rArr; DJI_Motor_Object::DJI_Motor_Object(__CAN_HandleTypeDef*, unsigned char, bool, Encoder_Type_e, unsigned int, float, float, float, unsigned int, float, float, float, unsigned int) &rArr; Pid_c::Pid_c(float, float, float, unsigned int, float, float, float, unsigned int) &rArr; Pid_c::PidInit(Pid_parameter_t*, float, float, float, unsigned int)
 <P>
@@ -1715,7 +1715,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Control_Fire_c::Set_Cmd()
 </UL>
 
-<P><STRONG><a name="[129]"></a>Control_Fire_c::Save_Empty_Position()</STRONG> (Thumb, 30 bytes, Stack size 4 bytes, fire_task.o(.text._ZN14Control_Fire_c19Save_Empty_PositionEv))
+<P><STRONG><a name="[129]"></a>Control_Fire_c::Save_Empty_Position()</STRONG> (Thumb, 28 bytes, Stack size 4 bytes, fire_task.o(.text._ZN14Control_Fire_c19Save_Empty_PositionEv))
 <BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = Control_Fire_c::Save_Empty_Position()
 </UL>
 <BR>[Called By]<UL><LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Control_Fire_c::Set_Cmd()
@@ -1733,7 +1733,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fire_task
 </UL>
 
-<P><STRONG><a name="[121]"></a>Control_Fire_c::Set_Cmd()</STRONG> (Thumb, 282 bytes, Stack size 32 bytes, fire_task.o(.text._ZN14Control_Fire_c7Set_CmdEv))
+<P><STRONG><a name="[121]"></a>Control_Fire_c::Set_Cmd()</STRONG> (Thumb, 276 bytes, Stack size 32 bytes, fire_task.o(.text._ZN14Control_Fire_c7Set_CmdEv))
 <BR><BR>[Stack]<UL><LI>Max Depth = 164<LI>Call Chain = Control_Fire_c::Set_Cmd() &rArr; CHASSIS_c::Fire_Motor_Work(long long) &rArr; DJI_Motor_Object::Ctrl_Calc() &rArr; Pid_c::PidCalculate(float, float, float) &rArr; this_PidCalculate(Pid_parameter_t*, float, float) &rArr; f_Derivative_On_Measurement(Pid_parameter_t*)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[128]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CHASSIS_c::Fire_Motor_Nowork()
@@ -1805,7 +1805,7 @@ Global Symbols
 
 <P><STRONG><a name="[1c4]"></a>Control_Move_c::Control_Move_c__sub_object()</STRONG> (Thumb, 40 bytes, Stack size 16 bytes, chassis_task.o(.text._ZN14Control_Move_cC2Ev), UNUSED)
 
-<P><STRONG><a name="[15a]"></a>DJI_Motor_Object::Set_PID_Val(short)</STRONG> (Thumb, 110 bytes, Stack size 12 bytes, dji_motor.o(.text._ZN16DJI_Motor_Object11Set_PID_ValEs))
+<P><STRONG><a name="[15a]"></a>DJI_Motor_Object::Set_PID_Val(short)</STRONG> (Thumb, 118 bytes, Stack size 12 bytes, dji_motor.o(.text._ZN16DJI_Motor_Object11Set_PID_ValEs))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = DJI_Motor_Object::Set_PID_Val(short)
 </UL>
 <BR>[Called By]<UL><LI><a href="#[134]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CHASSIS_c::MotorCalc()
@@ -1908,7 +1908,7 @@ Global Symbols
 <LI><a href="#[126]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CHASSIS_c::Fire_Motor_Work()
 </UL>
 
-<P><STRONG><a name="[145]"></a>DJI_Motor_Object::DJI_Motor_Object(__CAN_HandleTypeDef*, unsigned char, bool, Encoder_Type_e, unsigned int)</STRONG> (Thumb, 510 bytes, Stack size 48 bytes, dji_motor.o(.text._ZN16DJI_Motor_ObjectC2EP19__CAN_HandleTypeDefhb14Encoder_Type_ej))
+<P><STRONG><a name="[145]"></a>DJI_Motor_Object::DJI_Motor_Object(__CAN_HandleTypeDef*, unsigned char, bool, Encoder_Type_e, unsigned int)</STRONG> (Thumb, 508 bytes, Stack size 48 bytes, dji_motor.o(.text._ZN16DJI_Motor_ObjectC2EP19__CAN_HandleTypeDefhb14Encoder_Type_ej))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72 + Unknown Stack Size
 <LI>Call Chain = DJI_Motor_Object::DJI_Motor_Object(__CAN_HandleTypeDef*, unsigned char, bool, Encoder_Type_e, unsigned int) &rArr; DJI_Motor_Object::DJI_Motor_Encoder::DJI_Motor_Encoder_Data_Init(Encoder_Type_e, unsigned short)
 </UL>
@@ -1919,10 +1919,10 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[147]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DJI_Motor_Object::DJI_Motor_Object(__CAN_HandleTypeDef*, unsigned char, bool, Encoder_Type_e, unsigned int, float, float, float, unsigned int, float, float, float, unsigned int)
 </UL>
 
-<P><STRONG><a name="[1c5]"></a>DJI_Motor_Object::DJI_Motor_Object__sub_object(__CAN_HandleTypeDef*, unsigned char, bool, Encoder_Type_e, unsigned int)</STRONG> (Thumb, 510 bytes, Stack size 48 bytes, dji_motor.o(.text._ZN16DJI_Motor_ObjectC2EP19__CAN_HandleTypeDefhb14Encoder_Type_ej), UNUSED)
+<P><STRONG><a name="[1c5]"></a>DJI_Motor_Object::DJI_Motor_Object__sub_object(__CAN_HandleTypeDef*, unsigned char, bool, Encoder_Type_e, unsigned int)</STRONG> (Thumb, 508 bytes, Stack size 48 bytes, dji_motor.o(.text._ZN16DJI_Motor_ObjectC2EP19__CAN_HandleTypeDefhb14Encoder_Type_ej), UNUSED)
 
-<P><STRONG><a name="[147]"></a>DJI_Motor_Object::DJI_Motor_Object(__CAN_HandleTypeDef*, unsigned char, bool, Encoder_Type_e, unsigned int, float, float, float, unsigned int, float, float, float, unsigned int)</STRONG> (Thumb, 156 bytes, Stack size 816 bytes, dji_motor.o(.text._ZN16DJI_Motor_ObjectC2EP19__CAN_HandleTypeDefhb14Encoder_Type_ejfffjfffj))
-<BR><BR>[Stack]<UL><LI>Max Depth = 904 + Unknown Stack Size
+<P><STRONG><a name="[147]"></a>DJI_Motor_Object::DJI_Motor_Object(__CAN_HandleTypeDef*, unsigned char, bool, Encoder_Type_e, unsigned int, float, float, float, unsigned int, float, float, float, unsigned int)</STRONG> (Thumb, 154 bytes, Stack size 528 bytes, dji_motor.o(.text._ZN16DJI_Motor_ObjectC2EP19__CAN_HandleTypeDefhb14Encoder_Type_ejfffjfffj))
+<BR><BR>[Stack]<UL><LI>Max Depth = 616 + Unknown Stack Size
 <LI>Call Chain = DJI_Motor_Object::DJI_Motor_Object(__CAN_HandleTypeDef*, unsigned char, bool, Encoder_Type_e, unsigned int, float, float, float, unsigned int, float, float, float, unsigned int) &rArr; Pid_c::Pid_c(float, float, float, unsigned int, float, float, float, unsigned int) &rArr; Pid_c::PidInit(Pid_parameter_t*, float, float, float, unsigned int)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[145]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DJI_Motor_Object::DJI_Motor_Object(__CAN_HandleTypeDef*, unsigned char, bool, Encoder_Type_e, unsigned int)
@@ -1931,7 +1931,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[160]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CHASSIS_c::CHASSIS_c()
 </UL>
 
-<P><STRONG><a name="[1c6]"></a>DJI_Motor_Object::DJI_Motor_Object__sub_object(__CAN_HandleTypeDef*, unsigned char, bool, Encoder_Type_e, unsigned int, float, float, float, unsigned int, float, float, float, unsigned int)</STRONG> (Thumb, 156 bytes, Stack size 816 bytes, dji_motor.o(.text._ZN16DJI_Motor_ObjectC2EP19__CAN_HandleTypeDefhb14Encoder_Type_ejfffjfffj), UNUSED)
+<P><STRONG><a name="[1c6]"></a>DJI_Motor_Object::DJI_Motor_Object__sub_object(__CAN_HandleTypeDef*, unsigned char, bool, Encoder_Type_e, unsigned int, float, float, float, unsigned int, float, float, float, unsigned int)</STRONG> (Thumb, 154 bytes, Stack size 528 bytes, dji_motor.o(.text._ZN16DJI_Motor_ObjectC2EP19__CAN_HandleTypeDefhb14Encoder_Type_ejfffjfffj), UNUSED)
 
 <P><STRONG><a name="[12c]"></a>Gimbal_Fire_Info_t::Gimbal_Fire_Info_t__sub_object()</STRONG> (Thumb, 16 bytes, Stack size 4 bytes, fire_task.o(.text._ZN18Gimbal_Fire_Info_tC2Ev))
 <BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = Gimbal_Fire_Info_t::Gimbal_Fire_Info_t__sub_object()
@@ -2152,7 +2152,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Control_Fire_c::Set_Cmd()
 </UL>
 
-<P><STRONG><a name="[128]"></a>CHASSIS_c::Fire_Motor_Nowork()</STRONG> (Thumb, 50 bytes, Stack size 24 bytes, chassis.o(.text._ZN9CHASSIS_c17Fire_Motor_NoworkEv))
+<P><STRONG><a name="[128]"></a>CHASSIS_c::Fire_Motor_Nowork()</STRONG> (Thumb, 48 bytes, Stack size 24 bytes, chassis.o(.text._ZN9CHASSIS_c17Fire_Motor_NoworkEv))
 <BR><BR>[Stack]<UL><LI>Max Depth = 124<LI>Call Chain = CHASSIS_c::Fire_Motor_Nowork() &rArr; DJI_Motor_Object::Ctrl_Calc() &rArr; Pid_c::PidCalculate(float, float, float) &rArr; this_PidCalculate(Pid_parameter_t*, float, float) &rArr; f_Derivative_On_Measurement(Pid_parameter_t*)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[140]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DJI_Motor_Object::Ctrl_Calc()
@@ -2176,13 +2176,13 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[132]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CHASSIS_c::SetSpeed(short, short)
 </UL>
 
-<P><STRONG><a name="[131]"></a>CHASSIS_c::SetMode(Chassis_Mode_e)</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, chassis.o(.text._ZN9CHASSIS_c7SetModeE14Chassis_Mode_e))
+<P><STRONG><a name="[131]"></a>CHASSIS_c::SetMode(Chassis_Mode_e)</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, chassis.o(.text._ZN9CHASSIS_c7SetModeE14Chassis_Mode_e))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = CHASSIS_c::SetMode(Chassis_Mode_e)
 </UL>
 <BR>[Called By]<UL><LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Control_Move_c::Set_Cmd()
 </UL>
 
-<P><STRONG><a name="[132]"></a>CHASSIS_c::SetSpeed(short, short)</STRONG> (Thumb, 258 bytes, Stack size 48 bytes, chassis.o(.text._ZN9CHASSIS_c8SetSpeedEss))
+<P><STRONG><a name="[132]"></a>CHASSIS_c::SetSpeed(short, short)</STRONG> (Thumb, 254 bytes, Stack size 48 bytes, chassis.o(.text._ZN9CHASSIS_c8SetSpeedEss))
 <BR><BR>[Stack]<UL><LI>Max Depth = 156<LI>Call Chain = CHASSIS_c::SetSpeed(short, short) &rArr; Speed_c::Set(short, short, float, Chassis_Mode_e) &rArr; Pid_c::PidCalculate(float, float) &rArr; this_PidCalculate(Pid_parameter_t*, float, float) &rArr; f_Derivative_On_Measurement(Pid_parameter_t*)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[15e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sin_calculate
@@ -2193,8 +2193,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Control_Move_c::Set_Cmd()
 </UL>
 
-<P><STRONG><a name="[134]"></a>CHASSIS_c::MotorCalc()</STRONG> (Thumb, 486 bytes, Stack size 72 bytes, chassis.o(.text._ZN9CHASSIS_c9MotorCalcEv))
-<BR><BR>[Stack]<UL><LI>Max Depth = 172<LI>Call Chain = CHASSIS_c::MotorCalc() &rArr; DJI_Motor_Object::Ctrl_Calc() &rArr; Pid_c::PidCalculate(float, float, float) &rArr; this_PidCalculate(Pid_parameter_t*, float, float) &rArr; f_Derivative_On_Measurement(Pid_parameter_t*)
+<P><STRONG><a name="[134]"></a>CHASSIS_c::MotorCalc()</STRONG> (Thumb, 658 bytes, Stack size 88 bytes, chassis.o(.text._ZN9CHASSIS_c9MotorCalcEv))
+<BR><BR>[Stack]<UL><LI>Max Depth = 188<LI>Call Chain = CHASSIS_c::MotorCalc() &rArr; DJI_Motor_Object::Ctrl_Calc() &rArr; Pid_c::PidCalculate(float, float, float) &rArr; this_PidCalculate(Pid_parameter_t*, float, float) &rArr; f_Derivative_On_Measurement(Pid_parameter_t*)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[140]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DJI_Motor_Object::Ctrl_Calc()
 <LI><a href="#[159]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DJI_Motor_Object::Set_Keep()
@@ -2212,8 +2212,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Control_Move_c::Cmd_Ctrl()
 </UL>
 
-<P><STRONG><a name="[160]"></a>CHASSIS_c::CHASSIS_c()</STRONG> (Thumb, 408 bytes, Stack size 56 bytes, chassis.o(.text._ZN9CHASSIS_cC2Ev))
-<BR><BR>[Stack]<UL><LI>Max Depth = 960 + Unknown Stack Size
+<P><STRONG><a name="[160]"></a>CHASSIS_c::CHASSIS_c()</STRONG> (Thumb, 404 bytes, Stack size 56 bytes, chassis.o(.text._ZN9CHASSIS_cC2Ev))
+<BR><BR>[Stack]<UL><LI>Max Depth = 672 + Unknown Stack Size
 <LI>Call Chain = CHASSIS_c::CHASSIS_c() &rArr; DJI_Motor_Object::DJI_Motor_Object(__CAN_HandleTypeDef*, unsigned char, bool, Encoder_Type_e, unsigned int, float, float, float, unsigned int, float, float, float, unsigned int) &rArr; Pid_c::Pid_c(float, float, float, unsigned int, float, float, float, unsigned int) &rArr; Pid_c::PidInit(Pid_parameter_t*, float, float, float, unsigned int)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[156]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Speed_c::Speed_c__sub_object()
@@ -2222,7 +2222,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__cxx_global_var_init
 </UL>
 
-<P><STRONG><a name="[1cb]"></a>CHASSIS_c::CHASSIS_c__sub_object()</STRONG> (Thumb, 408 bytes, Stack size 56 bytes, chassis.o(.text._ZN9CHASSIS_cC2Ev), UNUSED)
+<P><STRONG><a name="[1cb]"></a>CHASSIS_c::CHASSIS_c__sub_object()</STRONG> (Thumb, 404 bytes, Stack size 56 bytes, chassis.o(.text._ZN9CHASSIS_cC2Ev), UNUSED)
 
 <P><STRONG><a name="[162]"></a>std::get_new_handler()</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, cxa_handlers.cpp.o(.text._ZSt15get_new_handlerv))
 <BR><BR>[Called By]<UL><LI><a href="#[161]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;operator new(unsigned int)
@@ -2777,7 +2777,7 @@ Local Symbols
 </UL>
 
 <P><STRONG><a name="[6a]"></a>_GLOBAL__sub_I_Chassis.cpp</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, chassis.o(.text._GLOBAL__sub_I_Chassis.cpp))
-<BR><BR>[Stack]<UL><LI>Max Depth = 984 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 696 + Unknown Stack Size
 <LI>Call Chain = _GLOBAL__sub_I_Chassis.cpp &rArr; __cxx_global_var_init &rArr; CHASSIS_c::CHASSIS_c() &rArr; DJI_Motor_Object::DJI_Motor_Object(__CAN_HandleTypeDef*, unsigned char, bool, Encoder_Type_e, unsigned int, float, float, float, unsigned int, float, float, float, unsigned int) &rArr; Pid_c::Pid_c(float, float, float, unsigned int, float, float, float, unsigned int) &rArr; Pid_c::PidInit(Pid_parameter_t*, float, float, float, unsigned int)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__cxx_global_var_init
@@ -2785,7 +2785,7 @@ Local Symbols
 <BR>[Address Reference Count : 1]<UL><LI> chassis.o(.init_array)
 </UL>
 <P><STRONG><a name="[10b]"></a>__cxx_global_var_init</STRONG> (Thumb, 34 bytes, Stack size 16 bytes, chassis.o(.text.__cxx_global_var_init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 976 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 688 + Unknown Stack Size
 <LI>Call Chain = __cxx_global_var_init &rArr; CHASSIS_c::CHASSIS_c() &rArr; DJI_Motor_Object::DJI_Motor_Object(__CAN_HandleTypeDef*, unsigned char, bool, Encoder_Type_e, unsigned int, float, float, float, unsigned int, float, float, float, unsigned int) &rArr; Pid_c::Pid_c(float, float, float, unsigned int, float, float, float, unsigned int) &rArr; Pid_c::PidInit(Pid_parameter_t*, float, float, float, unsigned int)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[161]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;operator new(unsigned int)

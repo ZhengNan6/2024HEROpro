@@ -107,7 +107,9 @@ void CHASSIS_c::SetMode(Chassis_Mode_e Chassis_Mode)
 void CHASSIS_c::MotorCalc(void)
 {
     static uint8_t Set_Lock_Potision = 1;//用于停下后首次设定锁定位置
-    if ((user_abs(this->LF_Motor.DJIMotor_feedback_data.speed) < 10) && (user_abs(this->LF_Motor.DJIMotor_feedback_data.speed) < 10) && (user_abs(this->LF_Motor.DJIMotor_feedback_data.speed) < 10) && (user_abs(this->LF_Motor.DJIMotor_feedback_data.speed) < 10))
+    if ((user_abs(this->LF_Motor.DJIMotor_feedback_data.speed) < 10) && (user_abs(this->LF_Motor.DJIMotor_feedback_data.speed) < 10) && (user_abs(this->LF_Motor.DJIMotor_feedback_data.speed) < 10) && (user_abs(this->LF_Motor.DJIMotor_feedback_data.speed) < 10)
+     && (user_abs(this->Speed.LF) < 10) && (user_abs(this->Speed.LF) < 10) && (user_abs(this->Speed.LF) < 10)  && (user_abs(this->Speed.LF) < 10)
+    )
     {
         this->Chassis_State = Chassis_State_e::LOCK;
     }    
@@ -117,6 +119,7 @@ void CHASSIS_c::MotorCalc(void)
         Set_Lock_Potision = 1;
     }
     
+    this->Chassis_State = Chassis_State_e::MOVE;//debug
     if (this->Chassis_State == Chassis_State_e::MOVE)
     {
         this->LF_Motor.Set_PID_Mode(Speed_PID);
@@ -278,8 +281,7 @@ RF_Motor(&hcan1, 2, false, M3508, 3500, 1, 1, 1, NONE, 1, 1, 1, NONE),
 LB_Motor(&hcan1, 3, false, M3508, 3500, 1, 1, 1, NONE, 1, 1, 1, NONE),
 RB_Motor(&hcan1, 4, false, M3508, 3500, 1, 1, 1, NONE, 1, 1, 1, NONE),
 FIRE_Motor(&hcan1, 5, false, M3508, 3500, 1, 1, 1, NONE, 1, 1, 1, NONE),
-Yaw_Motor(&hcan2, 1, false, GM6020, 3500, 1, 1, 1, NONE, 1, 1, 1, NONE)
-
+Yaw_Motor(&hcan2, 1, false, GM6020, 3500, 1, 2, 3, NONE, 4, 5, 6, NONE)
 {
     this->Different_Angle_with_Gimbal = 0;
     this->Chassis_State = Chassis_State_e::LOCK;

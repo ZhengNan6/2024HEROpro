@@ -1252,13 +1252,13 @@ I (..\Middlewares\Third_Party\FreeRTOS\Source\portable\RVDS\ARM_CM4F\portmacro.h
 I (..\Middlewares\Third_Party\FreeRTOS\Source\include\mpu_wrappers.h)(0x649E9E52)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\include\task.h)(0x649E9E52)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\include\list.h)(0x649E9E52)
-F (..\APP\Src\Chassis.cpp)(0x66D717A4)(-xc++ -std=c++11 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/ARM/DSP/Inc -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../ACE-ECF/Algorithm/inc -I ../ACE-ECF/Application/inc/IMU_Driver -I ../ACE-ECF/Application/inc -I ../ACE-ECF/Bsp/Inc -I ../ACE-ECF/Control/Inc -I ../TASK/inc -I ../APP/Inc-I./RTE/_CHASSIS-IC:/Users/Z/Desktop/ARM/CMSIS/5.9.0/CMSIS/Core/Include-IC:/Users/Z/Desktop/Keil/STM32F4xx_DFP/2.17.1/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="535" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx -D__TARGET_FPU_VFP -DARM_MATH_CM4-o chassis/chassis.o -MD)
+F (..\APP\Src\Chassis.cpp)(0x66D98134)(-xc++ -std=c++11 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/ARM/DSP/Inc -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../ACE-ECF/Algorithm/inc -I ../ACE-ECF/Application/inc/IMU_Driver -I ../ACE-ECF/Application/inc -I ../ACE-ECF/Bsp/Inc -I ../ACE-ECF/Control/Inc -I ../TASK/inc -I ../APP/Inc-I./RTE/_CHASSIS-IC:/Users/Z/Desktop/ARM/CMSIS/5.9.0/CMSIS/Core/Include-IC:/Users/Z/Desktop/Keil/STM32F4xx_DFP/2.17.1/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="535" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx -D__TARGET_FPU_VFP -DARM_MATH_CM4-o chassis/chassis.o -MD)
 I (..\APP\Inc\Chassis.hpp)(0x66CDF6D9)
 I (..\ACE-ECF\Algorithm\inc\pid.hpp)(0x66C59A48)
 I (C:\Keil_v5\ARM\ARMCLANG\include\libcxx\stdint.h)(0x602A3B7A)
 I (C:\Keil_v5\ARM\ARMCLANG\include\libcxx\__config)(0x603507B6)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x603507D0)
-I (..\ACE-ECF\Control\Inc\DJI_Motor.hpp)(0x66CDF429)
+I (..\ACE-ECF\Control\Inc\DJI_Motor.hpp)(0x66D97EF0)
 I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h)(0x649E9E9E)
 I (..\Core\Inc\stm32f4xx_hal_conf.h)(0x6697BCEF)
 I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h)(0x649E9E9E)
@@ -1375,8 +1375,8 @@ I (..\ACE-ECF\Algorithm\inc\struct_typedef.h)(0x6399D8B2)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x603507CA)
 I (C:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x603507D0)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdlib.h)(0x603507D0)
-F (..\ACE-ECF\Control\Src\DJI_Motor.cpp)(0x66CDF718)(-xc++ -std=c++11 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/ARM/DSP/Inc -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../ACE-ECF/Algorithm/inc -I ../ACE-ECF/Application/inc/IMU_Driver -I ../ACE-ECF/Application/inc -I ../ACE-ECF/Bsp/Inc -I ../ACE-ECF/Control/Inc -I ../TASK/inc -I ../APP/Inc-I./RTE/_CHASSIS-IC:/Users/Z/Desktop/ARM/CMSIS/5.9.0/CMSIS/Core/Include-IC:/Users/Z/Desktop/Keil/STM32F4xx_DFP/2.17.1/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="535" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx -D__TARGET_FPU_VFP -DARM_MATH_CM4-o chassis/dji_motor.o -MD)
-I (..\ACE-ECF\Control\Inc\DJI_Motor.hpp)(0x66CDF429)
+F (..\ACE-ECF\Control\Src\DJI_Motor.cpp)(0x66D98201)(-xc++ -std=c++11 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/ARM/DSP/Inc -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../ACE-ECF/Algorithm/inc -I ../ACE-ECF/Application/inc/IMU_Driver -I ../ACE-ECF/Application/inc -I ../ACE-ECF/Bsp/Inc -I ../ACE-ECF/Control/Inc -I ../TASK/inc -I ../APP/Inc-I./RTE/_CHASSIS-IC:/Users/Z/Desktop/ARM/CMSIS/5.9.0/CMSIS/Core/Include-IC:/Users/Z/Desktop/Keil/STM32F4xx_DFP/2.17.1/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="535" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx -D__TARGET_FPU_VFP -DARM_MATH_CM4-o chassis/dji_motor.o -MD)
+I (..\ACE-ECF\Control\Inc\DJI_Motor.hpp)(0x66D97EF0)
 I (..\ACE-ECF\Algorithm\inc\pid.hpp)(0x66C59A48)
 I (C:\Keil_v5\ARM\ARMCLANG\include\libcxx\stdint.h)(0x602A3B7A)
 I (C:\Keil_v5\ARM\ARMCLANG\include\libcxx\__config)(0x603507B6)
@@ -1467,7 +1467,7 @@ I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_spi.h)(0x649E9E9E)
 I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim.h)(0x649E9E9E)
 I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim_ex.h)(0x649E9E9E)
 I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h)(0x649E9E9E)
-I (..\TASK\inc\safe_task.hpp)(0x66CCA428)
+I (..\TASK\inc\safe_task.hpp)(0x66D97B99)
 I (C:\Keil_v5\ARM\ARMCLANG\include\libcxx\stdlib.h)(0x603507C8)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdlib.h)(0x603507D0)
 I (..\ACE-ECF\Algorithm\inc\CRC.h)(0x66D967AE)
@@ -1569,7 +1569,7 @@ I (..\Middlewares\Third_Party\FreeRTOS\Source\include\task.h)(0x649E9E52)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\include\list.h)(0x649E9E52)
 I (..\APP\Inc\Chassis.hpp)(0x66CDF6D9)
 I (..\ACE-ECF\Algorithm\inc\pid.hpp)(0x66C59A48)
-I (..\ACE-ECF\Control\Inc\DJI_Motor.hpp)(0x66CDF429)
+I (..\ACE-ECF\Control\Inc\DJI_Motor.hpp)(0x66D97EF0)
 I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h)(0x649E9E9E)
 I (..\Core\Inc\stm32f4xx_hal_conf.h)(0x6697BCEF)
 I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h)(0x649E9E9E)
@@ -1613,7 +1613,7 @@ I (..\ACE-ECF\Algorithm\inc\pid.hpp)(0x66C59A48)
 I (C:\Keil_v5\ARM\ARMCLANG\include\libcxx\stdint.h)(0x602A3B7A)
 I (C:\Keil_v5\ARM\ARMCLANG\include\libcxx\__config)(0x603507B6)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x603507D0)
-I (..\ACE-ECF\Control\Inc\DJI_Motor.hpp)(0x66CDF429)
+I (..\ACE-ECF\Control\Inc\DJI_Motor.hpp)(0x66D97EF0)
 I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h)(0x649E9E9E)
 I (..\Core\Inc\stm32f4xx_hal_conf.h)(0x6697BCEF)
 I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h)(0x649E9E9E)
@@ -1668,7 +1668,7 @@ I (..\Middlewares\Third_Party\FreeRTOS\Source\include\list.h)(0x649E9E52)
 I (..\ACE-ECF\Bsp\Inc\bsp_can.h)(0x66D9662C)
 I (..\Core\Inc\can.h)(0x6697BCEE)
 F (..\TASK\src\safe_task.cpp)(0x66D9752E)(-xc++ -std=c++11 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-gdwarf-4 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/ARM/DSP/Inc -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../ACE-ECF/Algorithm/inc -I ../ACE-ECF/Application/inc/IMU_Driver -I ../ACE-ECF/Application/inc -I ../ACE-ECF/Bsp/Inc -I ../ACE-ECF/Control/Inc -I ../TASK/inc -I ../APP/Inc-I./RTE/_CHASSIS-IC:/Users/Z/Desktop/ARM/CMSIS/5.9.0/CMSIS/Core/Include-IC:/Users/Z/Desktop/Keil/STM32F4xx_DFP/2.17.1/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="535" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx -D__TARGET_FPU_VFP -DARM_MATH_CM4-o chassis/safe_task.o -MD)
-I (..\TASK\inc\safe_task.hpp)(0x66CCA428)
+I (..\TASK\inc\safe_task.hpp)(0x66D97B99)
 I (C:\Keil_v5\ARM\ARMCLANG\include\libcxx\stdlib.h)(0x603507C8)
 I (C:\Keil_v5\ARM\ARMCLANG\include\libcxx\__config)(0x603507B6)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdlib.h)(0x603507D0)
