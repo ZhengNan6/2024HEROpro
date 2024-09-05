@@ -44,7 +44,6 @@
 "chassis\pid.o"
 "chassis\crc.o"
 "chassis\maths.o"
-"../Middlewares/ST/ARM/DSP/Lib/arm_cortexM4l_math.lib"
 "chassis\cybergear_motor.o"
 "chassis\dji_motor.o"
 "chassis\rc.o"
@@ -60,6 +59,7 @@
 "chassis\kalman_filter.o"
 "chassis\quaternionekf.o"
 "chassis\user_lib.o"
+"../Middlewares/ST/ARM/DSP/Lib/arm_cortexM4l_math.lib"
 --strict --scatter "CHASSIS\CHASSIS.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

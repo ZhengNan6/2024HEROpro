@@ -92,5 +92,6 @@ void chassis_task(void const *argument)
         Control_Move.Set_Cmd();//设定控制机体
         Control_Move.Cmd_Calc();//机体控制运算
         Control_Move.Cmd_Ctrl();//发送控制电流
+        vTaskDelay(1);
     }
 }

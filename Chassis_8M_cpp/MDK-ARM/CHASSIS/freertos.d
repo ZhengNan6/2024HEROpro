@@ -50,4 +50,5 @@ chassis/freertos.o: ..\Core\Src\freertos.c \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\queue.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\event_groups.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\timers.h \
-  ..\TASK\inc\chassis_task.h
+  ..\TASK\inc\chassis_task.h ..\ACE-ECF\Application\inc\safe_task.h \
+  ..\TASK\inc\fire_task.h

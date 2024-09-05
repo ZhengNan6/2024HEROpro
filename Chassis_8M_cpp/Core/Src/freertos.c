@@ -30,6 +30,8 @@ extern "C" {
 #endif
 
 #include "chassis_task.h"
+#include "safe_task.h"
+#include "fire_task.h"
 
 #ifdef __cplusplus
 }
@@ -57,6 +59,8 @@ extern "C" {
 /* USER CODE END Variables */
 osThreadId defaultTaskHandle;
 osThreadId CHASSIS_TASKHandle;
+osThreadId FIRE_TASKHandle;
+osThreadId SAFE_TASKHandle;
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -65,6 +69,8 @@ osThreadId CHASSIS_TASKHandle;
 
 void StartDefaultTask(void const * argument);
 extern void chassis_task(void const * argument);
+extern void fire_task(void const * argument);
+extern void safe_task(void const * argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -119,7 +125,16 @@ void MX_FREERTOS_Init(void) {
   osThreadDef(CHASSIS_TASK, chassis_task, osPriorityHigh, 0, 1024);
   CHASSIS_TASKHandle = osThreadCreate(osThread(CHASSIS_TASK), NULL);
 
+  /* definition and creation of FIRE_TASK */
+  osThreadDef(FIRE_TASK, fire_task, osPriorityHigh, 0, 512);
+  FIRE_TASKHandle = osThreadCreate(osThread(FIRE_TASK), NULL);
+
+  /* definition and creation of SAFE_TASK */
+  osThreadDef(SAFE_TASK, safe_task, osPriorityNormal, 0, 512);
+  SAFE_TASKHandle = osThreadCreate(osThread(SAFE_TASK), NULL);
+
   /* USER CODE BEGIN RTOS_THREADS */
+
   /* add threads, ... */
   /* USER CODE END RTOS_THREADS */
 

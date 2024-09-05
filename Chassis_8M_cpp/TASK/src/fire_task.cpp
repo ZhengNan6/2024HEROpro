@@ -1,12 +1,12 @@
 #include "Chassis.hpp"
 #include "RC.h"
 
-
 #ifdef  __cplusplus
 extern "C"
 {
 #endif
     
+#include "fire_task.h"
 #include "bsp_can.h"
     
 #ifdef  __cplusplus
@@ -207,5 +207,6 @@ void fire_task(void const *argument)
     {
         Control_Fire.Get_Cmd();
         Control_Fire.Set_Cmd();
+        vTaskDelay(1);
     }
 }

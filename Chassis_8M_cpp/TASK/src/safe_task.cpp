@@ -28,12 +28,12 @@
  * v2.0   C++升级版本  2024-8-27
  ************************** Dongguan-University of Technology -ACE***************************/
 #include "safe_task.hpp"
+
 extern "C"{
     #include "safe_task.h"
     #include <string.h>
     #include <stdint.h>
     #include "bsp_dwt.h"
-    #include "task.h"
 }
 
 /*任务间采用链表*/
@@ -102,9 +102,8 @@ void Safe_task_c::Doing_DisconnetCallBack(void)
     }
 }
 
-void SAFE_TASK(void const *argument)
+void safe_task(void const *argument)
 {
-
     DWT_Init(168);
     
 	while(1)
