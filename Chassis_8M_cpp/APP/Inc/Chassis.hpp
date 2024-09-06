@@ -3,6 +3,12 @@
 #include "pid.hpp"
 #include "DJI_Motor.hpp"
 #include "RC.hpp"
+
+extern "C"
+{
+#include "pm01_api.h"
+}
+
 typedef enum
 {
     MaiKeNaMu,
@@ -43,7 +49,7 @@ public:
     } // 传入合适的参数;
 
     void Set_Solution_method(Solution_method_e Solution_method);
-    void Set(int16_t Forward, int16_t Right, float Different_Angle_with_Gimbal, Chassis_Mode_e Chassis_Mode);
+    void Set(int16_t Forward, int16_t Right, float Different_Angle_with_Gimbal, Chassis_Mode_e Chassis_Mode, bool Fast_Mode);
 private:
     bool Lock_Flag = 0;
 };
@@ -53,8 +59,11 @@ class CHASSIS_c
 {
 public:
     float Different_Angle_with_Gimbal;
-    uint16_t MaxPowerLimit;
+    uint16_t CapPowerLimit_In = 55;
+    uint16_t CapPowerLimit_Out = 55;
+    uint16_t RefereePowerLimit = 55;
     Speed_c Speed;
+    Pm01_Info_t* Pm01_Info;
     DJI_Motor_Object Yaw_Motor;
     DJI_Motor_Object RF_Motor;
     DJI_Motor_Object RB_Motor;
@@ -63,13 +72,17 @@ public:
     DJI_Motor_Object FIRE_Motor;
     Chassis_Mode_e Chassis_Mode;
     Chassis_State_e Chassis_State;
+    const REFEREE_t *REFEREE;
+    bool Fast_Mode;
     // 公共接口获取唯一实例
     static CHASSIS_c *Get_Chassis_Instance();
-    void SetMode(Chassis_Mode_e Chassis_Mode);
+    void SetMode(Chassis_Mode_e Chassis_Mode, bool Fast_Mode);
     void SetSpeed(int16_t x, int16_t y);
+    void CapCtrl(void);
     void MotorCalc(void);
     void MotorCtrl(void);
-    void Power_Control(float MaxPowerLimit);
+    void Power_Control(void);
+
     void Fire_Motor_Nowork(void);
     void Fire_Motor_Empty(void);
     void Fire_Motor_Work(void);

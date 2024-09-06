@@ -1598,3 +1598,30 @@ T7F10 013:681.643 JLINK_ReadMemEx(0x00000002, 0x1 Bytes, Flags = 0x02000000)
 T7F10 013:681.654   CPU_ReadMem(1 bytes @ 0x08000002)
 T7F10 013:682.295   failed
 T7F10 013:682.314 - 0.671ms returns -1 (0xFFFFFFFF)
+T7F10 1147:553.444 JLINK_HasError()
+T7F10 1147:565.197 JLINK_Close()
+T7F10 1147:565.771   CPU is running
+T7F10 1147:565.802   CPU_WriteMem(4 bytes @ 0xE0002008)
+T7F10 1147:566.445   CPU is running
+T7F10 1147:566.470   CPU_WriteMem(4 bytes @ 0xE000200C)
+T7F10 1147:567.056   CPU is running
+T7F10 1147:567.080   CPU_WriteMem(4 bytes @ 0xE0002010)
+T7F10 1147:567.671   CPU is running
+T7F10 1147:567.693   CPU_WriteMem(4 bytes @ 0xE0002014)
+T7F10 1147:568.283   CPU is running
+T7F10 1147:568.305   CPU_WriteMem(4 bytes @ 0xE0002018)
+T7F10 1147:568.994   CPU is running
+T7F10 1147:569.016   CPU_WriteMem(4 bytes @ 0xE000201C)
+T7F10 1147:570.624   
+  ***** Warning: 
+T7F10 1147:570.647   CPU could not be halted
+T7F10 1147:570.676   OnDisconnectTarget() start
+T7F10 1147:570.690    J-Link Script File: Executing OnDisconnectTarget()
+T7F10 1147:570.708   CPU is running
+T7F10 1147:570.723   CPU_WriteMem(4 bytes @ 0xE0042004)
+T7F10 1147:571.323   CPU is running
+T7F10 1147:571.344   CPU_WriteMem(4 bytes @ 0xE0042008)
+T7F10 1147:571.993   OnDisconnectTarget() end - Took 1.28ms
+T7F10 1147:587.471 - 22.272ms
+T7F10 1147:587.500   
+T7F10 1147:587.515   Closed

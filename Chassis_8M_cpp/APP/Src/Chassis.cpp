@@ -1,10 +1,13 @@
 #include "Chassis.hpp"
+#include "RC.hpp"
 
 extern "C"
 {
+#include "bsp_dwt.h"
 #include "can.h"
 #include "maths.h"
 #include "math.h"
+#include "bsp_can.h"
 }
 extern CAN_HandleTypeDef hcan1;
 extern CAN_HandleTypeDef hcan2;
@@ -22,7 +25,7 @@ void Speed_c::Set_Solution_method(Solution_method_e Solution_method)
 *@param Right_speed   向前速度
 *@note  按照设定的解算模式
 */
-void Speed_c::Set(int16_t Forward, int16_t Right, float Different_Angle_with_Gimbal, Chassis_Mode_e Chassis_Mode)
+void Speed_c::Set(int16_t Forward, int16_t Right, float Different_Angle_with_Gimbal, Chassis_Mode_e Chassis_Mode,  bool Fast_Mode)
 {
     this->Forward = Forward;
     this->Right = Right;
@@ -48,10 +51,23 @@ void Speed_c::Set(int16_t Forward, int16_t Right, float Different_Angle_with_Gim
             this->Spin = 0;
             break;
     }
-    this->LF =  this->Right + this->Forward + this->Spin;
-    this->RF = -this->Right + this->Forward - this->Spin;
-    this->LB = -this->Right + this->Forward + this->Spin;
-    this->RB =  this->Right + this->Forward - this->Spin;
+    this->LF = ( this->Right + this->Forward + this->Spin) * Fast_Mode?15:10;
+    this->RF = (-this->Right + this->Forward - this->Spin) * Fast_Mode?15:10;
+    this->LB = (-this->Right + this->Forward + this->Spin) * Fast_Mode?15:10;
+    this->RB = ( this->Right + this->Forward - this->Spin) * Fast_Mode?15:10;
+
+    //电机最大速度9000，若超过则等比例缩放到9000，防止运动失真
+    uint16_t max_speed = max_abs(max_abs(this->LF, this->RF), max_abs(this->LB, this->RB));
+    if (max_speed > 9000)
+    {
+        float divisor = 9000.0f/((float)max_speed);
+        
+        this->LF *=  divisor;
+        this->RF *=  divisor;
+        this->LB *=  divisor;
+        this->RB *=  divisor;
+    }
+
 }
 
 /**
@@ -95,11 +111,14 @@ void CHASSIS_c::Fire_Motor_Nowork(void)
 }
 
 /**
- * @brief 底盘模式设置
+ * @brief 模式设置
+ * @param Chassis_Mode 底盘模式
+ * @param Fast_Mode    超速模式
  */
-void CHASSIS_c::SetMode(Chassis_Mode_e Chassis_Mode)
+void CHASSIS_c::SetMode(Chassis_Mode_e Chassis_Mode, bool Fast_Mode)
 {
     this->Chassis_Mode = Chassis_Mode;
+    this->Fast_Mode = Fast_Mode;
 }
 /**
  * @brief 底盘驱动轮电机计算
@@ -175,16 +194,46 @@ void CHASSIS_c::SetSpeed(int16_t Gimbal_Forward, int16_t Gimbal_Right)
                             -Gimbal_Right * sin_calculate(this->Different_Angle_with_Gimbal);
     int16_t Chassis_Forward = - Gimbal_Forward * sin_calculate(this->Different_Angle_with_Gimbal) 
                               + Gimbal_Right * cos_calculate(this->Different_Angle_with_Gimbal);
-    this->Speed.Set(Chassis_Forward, Chassis_Right, this->Different_Angle_with_Gimbal, this->Chassis_Mode);
+    this->Speed.Set(Chassis_Forward, Chassis_Right, this->Different_Angle_with_Gimbal, this->Chassis_Mode, this->Fast_Mode);
 }
 
+/**
+ * @param 超电电容控制
+ */
+void CHASSIS_c::CapCtrl(void)
+{
+    if (this->REFEREE->Robot_Status.chassis_power_limit != 0)//更新底盘功率上限
+        this->RefereePowerLimit = this->REFEREE->Robot_Status.chassis_power_limit;
+
+    static float Get_Dwt_ms = DWT_GetTimeline_ms();
+    static float Last_Get_Info_ms = 0;
+    static float Last_Set_Power_ms = 0;
+
+    if (Get_Dwt_ms - Last_Get_Info_ms > 10)//1000ms / 10ms = 100hz 读取超电电压
+    {
+        Last_Get_Info_ms = Get_Dwt_ms;
+        this->Pm01_Info->Get_Info();
+
+        if (this->Pm01_Info->energy >= 30)   this->CapPowerLimit_Out = this->Fast_Mode ? 160:120;//160w功率
+        if (this->Pm01_Info->energy >= 20 && this->Pm01_Info->energy < 30)   this->CapPowerLimit_Out = this->RefereePowerLimit;//输入功率
+        if (this->Pm01_Info->energy < 20 && this->Pm01_Info->energy >= 0)  this->CapPowerLimit_Out = this->RefereePowerLimit + this->Pm01_Info->energy - 20;//输入功率缩放
+    }
+    if (Get_Dwt_ms - Last_Set_Power_ms > 100)//10hz 根据剩余缓冲能量设定超点输入功率
+    {
+        Last_Set_Power_ms = Get_Dwt_ms;
+        float CapPowerLimit_In = this->RefereePowerLimit + (this->REFEREE->Power_Heat.chassis_power_buffer - 10.0f)/10.0f;//吃满缓冲能量
+        
+        this->Pm01_Info->Power_set((CapPowerLimit_In)*100,0x00);
+        this->Pm01_Info->Cmd_send(0x02, 0x01);
+    }
+}
 /**
  * @brief 底盘最大功率控制
  * @param MaxPowerLimit 最大功率 /w
  */
-void CHASSIS_c::Power_Control(float MaxPowerLimit)
+void CHASSIS_c::Power_Control()
 {
-    this->MaxPowerLimit = MaxPowerLimit;
+    float MaxPowerLimit = this->CapPowerLimit_Out;
     float Chassis_Power_All = 0;//底盘总功率
     int16_t speed[4];//转子转速
     int16_t I_out[4];//力矩电流
@@ -241,9 +290,9 @@ void CHASSIS_c::Power_Control(float MaxPowerLimit)
         if ( P_in[i] > 0 )  Chassis_Power_All += P_in[i];//忽略瞬时负功率 反充电
     }    
 
-    if ( Chassis_Power_All > this->MaxPowerLimit )//若总和超功率，则缩放
+    if ( Chassis_Power_All > MaxPowerLimit )//若总和超功率，则缩放
     {
-        float divisor = this->MaxPowerLimit / Chassis_Power_All;//缩放因子
+        float divisor = MaxPowerLimit / Chassis_Power_All;//缩放因子
         /*---目标输入功率等比例缩小---*/
         P_in[RF] = P_in[RF] * divisor;
         P_in[RB] = P_in[RB] * divisor;
@@ -305,12 +354,11 @@ Yaw_Motor(&hcan2, 1, false, GM6020, 3500)
     MotorManager::AddMotor(&FIRE_Motor, &hcan1);
     MotorManager::AddMotor(&Yaw_Motor, &hcan2);
 
-
-
+    this->REFEREE = Get_REFFEREE();//获取裁判系统数据指针
+    this->Pm01_Info = Get_Pm01_Info_Point(bsp_can_e::Bsp_Can1);//超电控制板挂载在can1
     this->Different_Angle_with_Gimbal = 0;
     this->Chassis_State = Chassis_State_e::LOCK;
     this->Chassis_Mode = Chassis_Mode_e::NO_FORCE;
-    this->MaxPowerLimit = 55;
 }
 
 CHASSIS_c *CHASSIS_c::Get_Chassis_Instance()
@@ -318,3 +366,4 @@ CHASSIS_c *CHASSIS_c::Get_Chassis_Instance()
     return Chassis_instance;
 }
 CHASSIS_c *CHASSIS_c::Chassis_instance = new CHASSIS_c; // 构造单例底盘类
+

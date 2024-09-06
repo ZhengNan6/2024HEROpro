@@ -7,9 +7,10 @@ public:
     ECF_RC *RC;
     CHASSIS_c* chassis;
     float Max_Power_Limit = 55;
-    float Forward_Speed;//前进为正
-    float Right_Speed;//右移为正
-    Chassis_Mode_e Chassis_Mode;//底盘模式
+    float Forward_Speed = 0;//前进为正
+    float Right_Speed = 0;//右移为正
+    Chassis_Mode_e Chassis_Mode = Chassis_Mode_e::NO_FORCE;//底盘模式
+    bool Fast_Mode = false;
     Control_Move_c();
     void Get_Cmd(void);
     void Set_Cmd(void);
@@ -34,7 +35,7 @@ void Control_Move_c::Get_Cmd(void)
 {
     this->Forward_Speed = ((this->RC->ctrl.rc.ch[0] ) + (-this->RC->ctrl.kb.bit.A + this->RC->ctrl.kb.bit.D) * 660 );
     this->Right_Speed = -((this->RC->ctrl.rc.ch[1] ) + (-this->RC->ctrl.kb.bit.S + this->RC->ctrl.kb.bit.W) * 660 );
-    
+    this->Fast_Mode = this->RC->ctrl.kb.bit.SHIFT ? true:false;
     static Chassis_Mode_e last_Chassis_Mode = NO_FOLLOW;
     static Chassis_Mode_e RC_Chassis_Mode = NO_FOLLOW;//上一次遥控设定的模式
     /*手柄*/
@@ -67,14 +68,14 @@ void Control_Move_c::Get_Cmd(void)
 
 void Control_Move_c::Set_Cmd(void)
 {
-    this->chassis->SetMode(this->Chassis_Mode);
+    this->chassis->SetMode(this->Chassis_Mode, this->Fast_Mode);
     this->chassis->SetSpeed(this->Forward_Speed, this->Right_Speed);
 }
 
 void Control_Move_c::Cmd_Calc(void)
 {
     this->chassis->MotorCalc();
-    this->chassis->Power_Control(this->Max_Power_Limit);
+    this->chassis->Power_Control();
 }
 
 void Control_Move_c::Cmd_Ctrl(void)

@@ -252,6 +252,9 @@
           },
           {
             "path": "../ACE-ECF/Bsp/Src/bsp_referee.c"
+          },
+          {
+            "path": "../ACE-ECF/Bsp/Src/pm01_api.c"
           }
         ],
         "folders": []
@@ -480,7 +483,7 @@
             "output-debug-info": "enable"
           },
           "c/cpp-compiler": {
-            "optimization": "level-0",
+            "optimization": "level-1",
             "language-c": "c99",
             "language-cpp": "c++11",
             "link-time-optimization": false,

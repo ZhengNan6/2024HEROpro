@@ -200,7 +200,6 @@ void Control_Fire_c::Set_Cmd(void)
     }
 }
 
-
 void fire_task(void const *argument)
 {
     while (1)

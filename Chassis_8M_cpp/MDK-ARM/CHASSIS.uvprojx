@@ -1325,11 +1325,6 @@
           <GroupName>Control</GroupName>
           <Files>
             <File>
-              <FileName>Cybergear_Motor.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\ACE-ECF\Control\Src\Cybergear_Motor.c</FilePath>
-            </File>
-            <File>
               <FileName>DJI_Motor.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\ACE-ECF\Control\Src\DJI_Motor.cpp</FilePath>
@@ -1353,6 +1348,11 @@
               <FileName>bsp_referee.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\ACE-ECF\Bsp\Src\bsp_referee.c</FilePath>
+            </File>
+            <File>
+              <FileName>pm01_api.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ACE-ECF\Bsp\Src\pm01_api.c</FilePath>
             </File>
           </Files>
         </Group>

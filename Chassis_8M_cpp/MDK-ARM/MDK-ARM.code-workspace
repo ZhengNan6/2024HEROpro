@@ -4,6 +4,10 @@
             "path": "."
         }
     ],
-    "settings": {},
+    "settings": {
+        "files.associations": {
+            "pm01_api.h": "c"
+        }
+    },
     "extensions": {}
 }
