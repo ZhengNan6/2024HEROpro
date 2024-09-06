@@ -198,7 +198,7 @@ void CHASSIS_c::SetSpeed(int16_t Gimbal_Forward, int16_t Gimbal_Right)
 }
 
 /**
- * @param 超电电容控制
+ * @param 底盘电容控制，计算电容输出输入
  */
 void CHASSIS_c::CapCtrl(void)
 {
@@ -228,8 +228,7 @@ void CHASSIS_c::CapCtrl(void)
     }
 }
 /**
- * @brief 底盘最大功率控制
- * @param MaxPowerLimit 最大功率 /w
+ * @brief 底盘功率控制
  */
 void CHASSIS_c::Power_Control()
 {
