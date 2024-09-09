@@ -223,6 +223,11 @@ void CHASSIS_c::CapCtrl(void)
         Last_Set_Power_ms = Get_Dwt_ms;
         float CapPowerLimit_In = this->RefereePowerLimit + (this->REFEREE->Power_Heat.chassis_power_buffer - 10.0f)/10.0f;//吃满缓冲能量
         
+        //输出电压24V
+        //电流 7.5A
+        //功率 为根据缓冲能量的负反馈调节
+        this->Pm01_Info->Voltage_set((24)*100, 0x01);
+        this->Pm01_Info->Current_set((7.5)*100, 0x01);
         this->Pm01_Info->Power_set((CapPowerLimit_In)*100,0x00);
         this->Pm01_Info->Cmd_send(0x02, 0x01);
     }
