@@ -199,6 +199,7 @@ void CHASSIS_c::SetSpeed(int16_t Gimbal_Forward, int16_t Gimbal_Right)
 
 /**
  * @param 底盘电容控制，计算电容输出输入
+ * @note  HZ采用DWT计时器，须初始化
  */
 void CHASSIS_c::CapCtrl(void)
 {
