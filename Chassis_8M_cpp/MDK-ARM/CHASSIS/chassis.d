@@ -42,7 +42,10 @@ chassis/chassis.o: ..\APP\Src\Chassis.cpp ..\APP\Inc\Chassis.hpp \
   ..\ACE-ECF\Control\Inc\RC.hpp \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\string.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h ..\Core\Inc\usart.h \
-  ..\Core\Inc\main.h ..\Core\Inc\can.h ..\ACE-ECF\Algorithm\inc\maths.h \
+  ..\Core\Inc\main.h ..\ACE-ECF\Bsp\Inc\pm01_api.h ..\Core\Inc\can.h \
+  ..\ACE-ECF\Bsp\Inc\bsp_can.h \
+  ..\ACE-ECF\Application\inc\IMU_Driver\bsp_dwt.h ..\Core\Inc\main.h \
+  ..\ACE-ECF\Algorithm\inc\maths.h \
   ..\ACE-ECF\Algorithm\inc\struct_typedef.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\math.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\math.h \
@@ -52,4 +55,5 @@ chassis/chassis.o: ..\APP\Src\Chassis.cpp ..\APP\Inc\Chassis.hpp \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\cstddef \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\version \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\limits \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\__undef_macros
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\__undef_macros \
+  ..\ACE-ECF\Bsp\Inc\bsp_can.h

@@ -28,6 +28,8 @@
  * v2.0   C++升级版本  2024-8-27
  ************************** Dongguan-University of Technology -ACE***************************/
 #include "safe_task.hpp"
+#include "FreeRTOS.h"
+#include "task.h"
 
 extern "C"{
     #include "safe_task.h"

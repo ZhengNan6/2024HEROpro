@@ -4,7 +4,6 @@ chassis/safe_task.o: ..\TASK\src\safe_task.cpp ..\TASK\inc\safe_task.hpp \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\stdint.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
-  ..\ACE-ECF\Application\inc\safe_task.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\FreeRTOS.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\stddef.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stddef.h \
@@ -17,6 +16,7 @@ chassis/safe_task.o: ..\TASK\src\safe_task.cpp ..\TASK\inc\safe_task.hpp \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\mpu_wrappers.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\task.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\list.h \
+  ..\TASK\inc\safe_task.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\string.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
   ..\ACE-ECF\Application\inc\IMU_Driver\bsp_dwt.h ..\Core\Inc\main.h \

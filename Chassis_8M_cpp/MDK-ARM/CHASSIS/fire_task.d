@@ -42,7 +42,9 @@ chassis/fire_task.o: ..\TASK\src\fire_task.cpp ..\APP\Inc\Chassis.hpp \
   ..\ACE-ECF\Control\Inc\RC.hpp \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\string.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h ..\Core\Inc\usart.h \
-  ..\Core\Inc\main.h ..\ACE-ECF\Control\Inc\RC.h ..\TASK\inc\fire_task.h \
+  ..\Core\Inc\main.h ..\ACE-ECF\Bsp\Inc\pm01_api.h ..\Core\Inc\can.h \
+  ..\ACE-ECF\Bsp\Inc\bsp_can.h ..\ACE-ECF\Control\Inc\RC.h \
+  ..\TASK\inc\fire_task.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\FreeRTOS.h \
   ..\Core\Inc\FreeRTOSConfig.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\projdefs.h \
@@ -52,4 +54,4 @@ chassis/fire_task.o: ..\TASK\src\fire_task.cpp ..\APP\Inc\Chassis.hpp \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\mpu_wrappers.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\task.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\list.h \
-  ..\ACE-ECF\Bsp\Inc\bsp_can.h ..\Core\Inc\can.h
+  ..\ACE-ECF\Bsp\Inc\bsp_can.h

@@ -52,4 +52,5 @@ chassis/chassis_task.o: ..\TASK\src\chassis_task.cpp \
   ..\ACE-ECF\Control\Inc\RC.hpp \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\string.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h ..\Core\Inc\usart.h \
-  ..\Core\Inc\main.h
+  ..\Core\Inc\main.h ..\ACE-ECF\Bsp\Inc\pm01_api.h ..\Core\Inc\can.h \
+  ..\ACE-ECF\Bsp\Inc\bsp_can.h
