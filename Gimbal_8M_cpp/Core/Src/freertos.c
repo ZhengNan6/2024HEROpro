@@ -25,7 +25,10 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "safe_task.h"
+#include "fire_task.h"
+#include "gimbal_task.h"
+#include "imu_task.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -61,9 +64,9 @@ osThreadId safe_taskHandle;
 
 void StartDefaultTask(void const * argument);
 extern void GIMBAL_TASK(void const * argument);
-extern void ECF_IMU_Task(void const * argument);
+// extern void ECF_IMU_Task(void const * argument);
 extern void FIRE_TASK(void const * argument);
-extern void VIRTUAL_TASK(void const * argument);
+// extern void VIRTUAL_TASK(void const * argument);
 extern void SAFE_TASK(void const * argument);
 
 extern void MX_USB_DEVICE_Init(void);
@@ -121,16 +124,16 @@ void MX_FREERTOS_Init(void) {
   gimbal_taskHandle = osThreadCreate(osThread(gimbal_task), NULL);
 
   /* definition and creation of imu_task */
-  osThreadDef(imu_task, ECF_IMU_Task, osPriorityNormal, 0, 512);
-  imu_taskHandle = osThreadCreate(osThread(imu_task), NULL);
+  // osThreadDef(imu_task, ECF_IMU_Task, osPriorityNormal, 0, 512);
+  // imu_taskHandle = osThreadCreate(osThread(imu_task), NULL);
 
   /* definition and creation of fire_task */
   osThreadDef(fire_task, FIRE_TASK, osPriorityNormal, 0, 512);
   fire_taskHandle = osThreadCreate(osThread(fire_task), NULL);
 
   /* definition and creation of virtual_task */
-  osThreadDef(virtual_task, VIRTUAL_TASK, osPriorityNormal, 0, 512);
-  virtual_taskHandle = osThreadCreate(osThread(virtual_task), NULL);
+  // osThreadDef(virtual_task, VIRTUAL_TASK, osPriorityNormal, 0, 512);
+  // virtual_taskHandle = osThreadCreate(osThread(virtual_task), NULL);
 
   /* definition and creation of safe_task */
   osThreadDef(safe_task, SAFE_TASK, osPriorityNormal, 0, 512);

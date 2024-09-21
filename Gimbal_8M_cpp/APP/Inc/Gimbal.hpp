@@ -2,6 +2,7 @@
 #define __GIMBAL_HPP__
 #include "DJI_Motor.hpp"
 #include "RC.hpp"
+#include "imu_task.h"
 
 typedef enum
 {
@@ -17,6 +18,7 @@ class Motor_Control_c{
     float       Set_IMU;
     const float *Actual_Encoder;
     const float *Actual_IMU;
+    Motor_Control_c();
     Motor_Control_c(const float * Actual_Encoder, const float * Actual_IMU);
     void Set_Control(Lock_Mode_e Set_Lock_Mode, float Set_Value);
     void Get_Actual_Encoder_Point(const float * Actual_Encoder);
@@ -33,6 +35,7 @@ public:
     bool Fire_Star;
     bool Fire_Ready;
     uint16_t Set_Speed;
+    Fire_c();
     void SendFireReady(void);
     void SetSpeed(uint16_t FireSpeed);
     void SetStar(bool Set);
@@ -40,7 +43,7 @@ public:
 
 typedef enum
 {
-    Manual,
+    Mammual,
     LongShot,
     Auto
 }Gimbal_Mode_e;

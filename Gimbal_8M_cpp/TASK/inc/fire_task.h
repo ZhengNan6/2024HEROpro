@@ -8,7 +8,7 @@
 extern "C" {
 #endif
     
-void fire_task(void const *argument);
+void FIRE_TASK(void const *argument);
     
 #ifdef __cplusplus
 }

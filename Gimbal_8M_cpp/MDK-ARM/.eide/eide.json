@@ -273,27 +273,89 @@
       },
       {
         "name": "Algorithm",
-        "files": [],
+        "files": [
+          {
+            "path": "../ACE-ECF/Algorithm/src/CRC.c"
+          },
+          {
+            "path": "../ACE-ECF/Algorithm/src/pid.cpp"
+          },
+          {
+            "path": "../ACE-ECF/Algorithm/src/maths.c"
+          },
+          {
+            "path": "../ACE-ECF/Algorithm/src/pid.c"
+          }
+        ],
         "folders": []
       },
       {
         "name": "Control",
-        "files": [],
+        "files": [
+          {
+            "path": "../ACE-ECF/Control/Src/DJI_Motor.cpp"
+          },
+          {
+            "path": "../ACE-ECF/Control/Src/RC.cpp"
+          },
+          {
+            "path": "../ACE-ECF/Control/Src/Cybergear_Motor.cpp"
+          }
+        ],
         "folders": []
       },
       {
         "name": "Bsp",
-        "files": [],
+        "files": [
+          {
+            "path": "../ACE-ECF/Bsp/Src/bsp_can.c"
+          }
+        ],
         "folders": []
       },
       {
         "name": "Task",
-        "files": [],
+        "files": [
+          {
+            "path": "../TASK/src/fire_task.cpp"
+          },
+          {
+            "path": "../TASK/src/gimbal_task.cpp"
+          },
+          {
+            "path": "../TASK/src/safe_task.cpp"
+          },
+          {
+            "path": "../ACE-ECF/Application/src/imu_task.c"
+          }
+        ],
         "folders": []
       },
       {
         "name": "IMU_Driver",
-        "files": [],
+        "files": [
+          {
+            "path": "../ACE-ECF/Application/src/IMU_Driver/BMI088driver.c"
+          },
+          {
+            "path": "../ACE-ECF/Application/src/IMU_Driver/BMI088Middleware.c"
+          },
+          {
+            "path": "../ACE-ECF/Application/src/IMU_Driver/bsp_dwt.c"
+          },
+          {
+            "path": "../ACE-ECF/Application/src/IMU_Driver/bsp_PWM.c"
+          },
+          {
+            "path": "../ACE-ECF/Application/src/IMU_Driver/kalman_filter.c"
+          },
+          {
+            "path": "../ACE-ECF/Application/src/IMU_Driver/QuaternionEKF.c"
+          },
+          {
+            "path": "../ACE-ECF/Application/src/IMU_Driver/user_lib.c"
+          }
+        ],
         "folders": []
       },
       {
@@ -311,7 +373,10 @@
   },
   "targets": {
     "Gimbal": {
-      "excludeList": [],
+      "excludeList": [
+        "<virtual_root>/Task/imu_task.c",
+        "<virtual_root>/Algorithm/pid.c"
+      ],
       "toolchain": "AC6",
       "compileConfig": {
         "cpuType": "Cortex-M4",

@@ -34,6 +34,9 @@ extern "C"{
     #include <string.h>
     #include <stdint.h>
     #include "bsp_dwt.h"
+    
+    #include "FreeRTOS.h"
+    #include "task.h"
 }
 
 /*任务间采用链表*/
@@ -102,7 +105,7 @@ void Safe_task_c::Doing_DisconnetCallBack(void)
     }
 }
 
-void safe_task(void const *argument)
+void SAFE_TASK(void const *argument)
 {
     DWT_Init(168);
     

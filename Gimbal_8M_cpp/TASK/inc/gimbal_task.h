@@ -6,7 +6,7 @@
 extern "C" {
     
 #endif
-void chassis_task(void const *argument);
+void GIMBAL_TASK(void const *argument);
 #ifdef __cplusplus
 }
     
